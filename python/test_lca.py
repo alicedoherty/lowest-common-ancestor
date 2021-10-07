@@ -1,6 +1,7 @@
 import unittest
-import lca
-#from lca import findLCA, Node
+# import lca
+
+from lca import findLCA, Node
 
 # Cases we want to test:
 #  - standard looking tree
