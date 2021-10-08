@@ -15,8 +15,8 @@ func TestBasicTree(t *testing.T) {
     //  4     5 6     7
 
     root := Node{1, nil, nil}
-	root.left = &Node{2, nil, nil}
-	root.right = &Node{3, nil, nil}
+    root.left = &Node{2, nil, nil}
+    root.right = &Node{3, nil, nil}
     root.left.left = &Node{4, nil, nil}
     root.left.right = &Node{5, nil, nil}
     root.right.left = &Node{6, nil, nil}
@@ -54,8 +54,8 @@ func TestStraightTree(t *testing.T) {
     //        4
 
     root := Node{1, nil, nil}
-	root.right = &Node{2, nil, nil}
-	root.right.right = &Node{3, nil, nil}
+    root.right = &Node{2, nil, nil}
+    root.right.right = &Node{3, nil, nil}
     root.right.right.right = &Node{4, nil, nil}
 
     lca := findLeastCommonAncestor(&root, 4, 3).key
@@ -76,8 +76,8 @@ func TestNodeIsLCA(t *testing.T) {
     //   4     5
 
     root := Node{1, nil, nil}
-	root.left = &Node{2, nil, nil}
-	root.right = &Node{3, nil, nil}
+    root.left = &Node{2, nil, nil}
+    root.right = &Node{3, nil, nil}
     root.left.left = &Node{4, nil, nil}
     root.left.right = &Node{5, nil, nil}
 
@@ -98,8 +98,8 @@ func TestNodeNotIncluded(t *testing.T) {
     //   4     5
 
     root := Node{1, nil, nil}
-	root.left = &Node{2, nil, nil}
-	root.right = &Node{3, nil, nil}
+    root.left = &Node{2, nil, nil}
+    root.right = &Node{3, nil, nil}
     root.left.left = &Node{4, nil, nil}
     root.left.right = &Node{5, nil, nil}
 
