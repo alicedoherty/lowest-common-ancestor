@@ -6,6 +6,8 @@ Program written in Go to find the LCA of two given nodes in a binary tree.
 
 `lca_test.go` - test code
 
+100% test coverage (found by running `go test -race -covermode=atomic -coverprofile=coverage`)
+
 <br />
 
 (Assuming you have Go already installed)
