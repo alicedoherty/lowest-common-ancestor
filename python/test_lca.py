@@ -84,7 +84,7 @@ class TestLCA(unittest.TestCase):
         self.assertEqual(result, None)
 
     def test_null_tree(self):
-        # Test when the there is no binary tree (root is None).
+        # Test when there is no binary tree (root is None).
 
         root = None
         result = lca.findLCA(root, 1, 2)
