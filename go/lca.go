@@ -10,8 +10,8 @@ type Node struct {
 }
 
 
-// If both n1 and n2 are in the binary tree calls recursiveFindLCA() and returns the LCA,
-// otherwise returns None.
+// If both n1 and n2 are in the binary tree calls recursiveFindLeastCommonAncestor()
+// and returns the LCA, otherwise returns nil.
 func findLeastCommonAncestor(root *Node, n1 int, n2 int) *Node {
 	if isNodePresent(root, n1) && isNodePresent(root, n2) {
 		return recursiveFindLeastCommonAncestor(root, n1, n2)

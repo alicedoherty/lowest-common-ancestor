@@ -4,8 +4,6 @@ import (
     "testing"
 )
 
-// Add comments
-
 func TestBasicTree(t *testing.T) {
     // Test basic LCA queries with below binary tree.
     //         1
@@ -111,7 +109,7 @@ func TestNodeNotIncluded(t *testing.T) {
 }
 
 func TestNullTree(t *testing.T) {
-    // Test when there is no binary tree (root is None).
+    // Test when there is no binary tree (root is nil).
 
     var root *Node = nil 
 
