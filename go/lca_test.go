@@ -89,7 +89,6 @@ func TestNodeIsLCA(t *testing.T) {
 }
 
 func TestNodeNotIncluded(t *testing.T) {
-    // TODO implement checks
     // Test whe provided node is not in the binary tree.
     //
     //          1
@@ -107,7 +106,7 @@ func TestNodeNotIncluded(t *testing.T) {
     lca := findLeastCommonAncestor(&root, 0, 2)
 
     if lca != nil {
-        t.Errorf("LCA is incorrect")// got %d, want %d", lca, 2)
+        t.Errorf("LCA is incorrect, should return nil if node(s) not present in tree")
     }
 }
 
