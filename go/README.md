@@ -10,6 +10,16 @@ Program written in Go to find the LCA of two given nodes in a binary tree.
 
 <br />
 
+## To Run Tests
+
 (Assuming you have Go already installed)
 
-To run tests: `go test`
+### On Windows and Linux
+
+`go test`
+
+----
+
+### [run.sh](run.sh)
+
+Alternatively run `./run.sh` to install Go and run the tests (Linux only)

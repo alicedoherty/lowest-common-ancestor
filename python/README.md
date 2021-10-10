@@ -10,6 +10,20 @@ Program written in Python 3.10 to find the LCA of two given nodes in a binary tr
 
 <br />
 
+## To Run Tests
+
 (Assuming you have Python already installed)
 
-To run tests: `python test_lca.py`
+### On Windows
+
+`python test_lca.py`
+
+### On Linux
+
+`python3 test_lca.py`
+
+---
+
+### [run.sh](run.sh)
+
+Alternatively run `./run.sh` to install Python and run the tests (Linux only)
