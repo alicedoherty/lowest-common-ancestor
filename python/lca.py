@@ -48,13 +48,13 @@ def recursiveFindLCA(root, n1, n2):
     if n1 == n2:
         return n1.key
 
-    lca = [ ]
-    
+    lca = []
+
     for x in range(len(n1.parents)):
         for y in range(len(n2.parents)):
             if(n1.parents[x].key == n2.parents[y].key):
                 lca.append(n1.parents[x].key)
-    
+
     if(lca == []):
         if(n1.key > n2.key):
             lca.append(recursiveFindLCA(root, n1.parents[0], n2))
@@ -62,7 +62,6 @@ def recursiveFindLCA(root, n1, n2):
             lca.append(recursiveFindLCA(root, n1, n2.parents[0]))
 
     return max(lca)
-
 
     # left_lca = recursiveFindLCA(root.left, n1, n2)
     # right_lca = recursiveFindLCA(root.right, n1, n2)
