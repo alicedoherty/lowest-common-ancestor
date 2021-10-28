@@ -90,6 +90,8 @@ class TestLCA(unittest.TestCase):
         result = lca.findLCA(root, 1, 2)
         self.assertEqual(result, None)
 
+    def test_basic_dag(self):
+        # Can't write DAG test as there is no DAG data structure
 
 if __name__ == '__main__':
     unittest.main()
