@@ -3,6 +3,7 @@
 
 import sys
 
+
 class DAG:
     # Initialise DAG with empty graph (dict)
     def __init__(self):
@@ -47,6 +48,8 @@ def findLCA(graph, n1, n2):
         n1 - the first Node
         n2 - the second Node
     """
+    if not isAcyclic(graph):
+        return None
 
     global n1_list
     global n2_list
@@ -56,7 +59,6 @@ def findLCA(graph, n1, n2):
     for node in graph:
         dfs([node], graph, node, 1, n1)
         dfs([node], graph, node, 2, n2)
-
 
     min_dist = sys.maxsize
     for x in n1_list:
@@ -86,7 +88,6 @@ def dfs(node_list, graph, node, i, terminal_node):
             n2_list.append(node_list[:])
         return True
 
-    
     if not graph[node]:
         return True
 
@@ -95,4 +96,27 @@ def dfs(node_list, graph, node, i, terminal_node):
             node_list.append(x)
             dfs(node_list, graph, x, i, terminal_node)
             node_list.remove(x)
+        return True
+
+
+def isAcyclic(graph):
+    for node in graph:
+        if not isAcyclicRecursive([node], graph, node):
+            return False
+
+    return True
+
+
+def isAcyclicRecursive(node_list, graph, node):
+    if not graph[node]:
+        return True
+    else:
+        for x in graph[node]:
+            if x not in node_list:
+                node_list.append(x)
+                if not isAcyclicRecursive(node_list, graph, x):
+                    return False
+                node_list.remove(x)
+            else:
+                return False
         return True

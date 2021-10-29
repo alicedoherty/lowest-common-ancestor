@@ -1,6 +1,7 @@
 import unittest
 import lca
 
+
 class TestLCA(unittest.TestCase):
 
     # def test_basic_tree(self):
@@ -131,7 +132,6 @@ class TestLCA(unittest.TestCase):
 
         result = lca.findLCA(dag.graph, 4, 5)
         self.assertEqual(result, 4)
-
 
     def test_node_not_included_dag(self):
         # Test when node is not included in DAG.
