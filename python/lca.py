@@ -1,17 +1,43 @@
 # Python program to find LCA of two nodes of a directed acyclic graph.
 # Assumes that each node has a unique key.
 
-class Node:
+import sys
 
-    # Key is the value of the node.
+class DAG:
+    # Initialise DAG with empty graph (dict)
+    def __init__(self):
+        self.graph = {}
 
-    def __init__(self, key):
-        self.key = key
-        self.parents = []
-        self.children = []
+    # Add a node to the graph
+
+    def add_node(self, node, graph={}):
+        if not graph:
+            graph = self.graph
+
+        if node in graph:
+            return False
+
+        # Initialise a list to contain the nodes edges
+        graph[node] = []
+
+    # Add an edge to the graph
+    # n1 = initial node
+    # n2 = terminal node
+    # i.e direction = n1 -> n2
+
+    def add_edge(self, n1, n2, graph={}):
+        if not graph:
+            graph = self.graph
+
+        # Can only add edge if both the nodes are in the graph
+        if n1 in graph and n2 in graph:
+            graph[n1].append(n2)
+            return True
+
+        return False
 
 
-def findLCA(root, n1, n2):
+def findLCA(graph, n1, n2):
     """
     If both n1 and n2 are in the binary tree calls recursiveFindLCA() and returns the LCA,
     otherwise returns None.
@@ -22,76 +48,51 @@ def findLCA(root, n1, n2):
         n2 - the second Node
     """
 
-    # if isNodePresent(root, n1) and isNodePresent(root, n2):
-    #     return recursiveFindLCA(root, n1, n2)
-    # else:
-    #     return None
+    global n1_list
+    global n2_list
+    n1_list = []
+    n2_list = []
+
+    for node in graph:
+        dfs([node], graph, node, 1, n1)
+        dfs([node], graph, node, 2, n2)
 
 
-def recursiveFindLCA(root, n1, n2):
-    """
-    Returns a pointer to the LCA of two given nodes, n1 and n2.
-    If one Node is an ancestor of the other, then the parent node is the LCA.
+    min_dist = sys.maxsize
+    for x in n1_list:
+        for y in n2_list:
+            dist = 0
+            for i, nX in enumerate(reversed(x)):
+                dist = i
+                for nY in reversed(y):
+                    if nX == nY and dist < min_dist:
+                        # LCA is node with shortest distance
+                        lca = nY
+                        min_dist = dist
+                        return lca
 
-    Parameters:
-        root - the root Node of the binary tree
-        n1 - the first Node
-        n2 - the second Node
-    """
+                    dist += 1
 
-    if root is None:
-        return None
-
-    if root.key == n1 or root.key == n2:
-        return root
-
-    if n1 == n2:
-        return n1.key
-
-    lca = []
-
-    for x in range(len(n1.parents)):
-        for y in range(len(n2.parents)):
-            if(n1.parents[x].key == n2.parents[y].key):
-                lca.append(n1.parents[x].key)
-
-    if(lca == []):
-        if(n1.key > n2.key):
-            lca.append(recursiveFindLCA(root, n1.parents[0], n2))
-        else:
-            lca.append(recursiveFindLCA(root, n1, n2.parents[0]))
-
-    return max(lca)
-
-    # left_lca = recursiveFindLCA(root.left, n1, n2)
-    # right_lca = recursiveFindLCA(root.right, n1, n2)
-
-    # if left_lca and right_lca:
-    #     return root
-
-    # return left_lca if left_lca is not None else right_lca
+    return None
 
 
-# def isNodePresent(root, key):
-#     """
-#     Checks if a key is present in a given binary tree.
+# Depth First Search for a node
+def dfs(node_list, graph, node, i, terminal_node):
+    if node == terminal_node:
 
-#     Parameters:
-#         root - the root Node of the binary tree
-#         key - the value of the Node to check
-#     """
+        if i == 1:
+            n1_list.append(node_list[:])
+        elif i == 2:
+            n2_list.append(node_list[:])
+        return True
 
-#     if root is None:
-#         return False
+    
+    if not graph[node]:
+        return True
 
-#     if root.key == key:
-#         return True
-
-#     left = isNodePresent(root.left, key)
-
-#     if left:
-#         return True
-
-#     right = isNodePresent(root.right, key)
-
-#     return right
+    else:
+        for x in graph[node]:
+            node_list.append(x)
+            dfs(node_list, graph, x, i, terminal_node)
+            node_list.remove(x)
+        return True
