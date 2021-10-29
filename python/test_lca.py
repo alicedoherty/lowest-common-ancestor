@@ -233,6 +233,25 @@ class TestLCA(unittest.TestCase):
         result = lca.findLCA(dag.graph, 4, 5)
         self.assertEqual(result, 6)
 
+    #
+    # Extra tests to ensure 100% code coverage.
+    #
+
+    def test_adding_existing_node(self):
+        # Test adding a node that already exists in the graph.
+        dag = lca.Graph()
+        dag.add_node(1)
+
+        self.assertFalse(dag.add_node(1))
+
+    def test_adding_invalid_edge(self):
+        # Test adding an invalid edge to the graph.
+
+        dag = lca.Graph()
+        dag.add_node(1)
+
+        self.assertFalse(dag.add_edge(1, 2))
+
 
 if __name__ == '__main__':
     unittest.main()
