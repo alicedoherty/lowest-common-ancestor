@@ -5,12 +5,11 @@ import sys
 
 
 class Graph:
-    # Initialise DAG with empty graph (dict)
+    # Initialise Graph with empty graph (dict)
     def __init__(self):
         self.graph = {}
 
     # Add a node to the graph
-
     def add_node(self, node, graph={}):
         if not graph:
             graph = self.graph
@@ -21,11 +20,8 @@ class Graph:
         # Initialise a list to contain the nodes edges
         graph[node] = []
 
-    # Add an edge to the graph
-    # n1 = initial node
-    # n2 = terminal node
+    # Add an edge to the graph (n1 = initial node, n2 = terminal node)
     # i.e direction = n1 -> n2
-
     def add_edge(self, n1, n2, graph={}):
         if not graph:
             graph = self.graph
@@ -40,14 +36,15 @@ class Graph:
 
 def findLCA(graph, n1, n2):
     """
-    If both n1 and n2 are in the binary tree calls recursiveFindLCA() and returns the LCA,
+    If both n1 and n2 are in the graph and the graph is acyclic finds the LCA using DFS,
     otherwise returns None.
 
     Parameters:
-        root - the root Node of the binary tree
+        graph - the graph
         n1 - the first Node
         n2 - the second Node
     """
+
     if not isAcyclic(graph):
         return None
 
@@ -81,7 +78,6 @@ def findLCA(graph, n1, n2):
 # Depth First Search for a node
 def dfs(node_list, graph, node, i, terminal_node):
     if node == terminal_node:
-
         if i == 1:
             n1_list.append(node_list[:])
         elif i == 2:
@@ -99,6 +95,7 @@ def dfs(node_list, graph, node, i, terminal_node):
         return True
 
 
+# Returns True is the provided graph is acyclic
 def isAcyclic(graph):
     for node in graph:
         if not isAcyclicRecursive([node], graph, node):

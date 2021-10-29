@@ -4,6 +4,10 @@ import lca
 
 class TestLCA(unittest.TestCase):
 
+    #
+    # First section of tests cover original binary tree cases.
+    #
+
     def test_basic_tree(self):
         # Test basic LCA queries with below binary tree.
         #
@@ -115,6 +119,10 @@ class TestLCA(unittest.TestCase):
         result = lca.findLCA(tree.graph, 1, 2)
         self.assertEqual(result, None)
 
+    #
+    # Second second of tests cover DAG cases.
+    #
+
     def test_classic_dag(self):
         # Test with basic DAG.
         # Picture: https://upload.wikimedia.org/wikipedia/commons/f/fe/Tred-G.svg
@@ -139,6 +147,9 @@ class TestLCA(unittest.TestCase):
         self.assertEqual(result, 1)
 
     def test_node_is_lca_dag(self):
+        # Test when one of the provided nodes is the LCA.
+        # Picture: https://upload.wikimedia.org/wikipedia/commons/f/fe/Tred-G.svg
+
         dag = lca.Graph()
         dag.add_node(1)
         dag.add_node(2)
@@ -160,6 +171,7 @@ class TestLCA(unittest.TestCase):
 
     def test_node_not_included_dag(self):
         # Test when node is not included in DAG.
+        #
         #         1
         #       / | \
         #      2  3  4

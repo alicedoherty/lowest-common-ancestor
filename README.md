@@ -6,4 +6,4 @@ LCA 1:
 - [x] [Go implementation](go) (new language) in `go/`
 
 LCA 2:
-- [ ] Modify [python implementation](python) to work with DAGs
+- [x] Modify [python implementation](python) to work with DAGs
