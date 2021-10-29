@@ -1,6 +1,6 @@
 # Lowest Common Ancestor in Python
 
-Program written in Python 3.10 to find the LCA of two given nodes in a binary tree.
+Program written in Python 3.10 to find the LCA of two given nodes in a directed acyclic graph.
 
 `lca.py` - main source code
 
