@@ -4,7 +4,7 @@
 import sys
 
 
-class DAG:
+class Graph:
     # Initialise DAG with empty graph (dict)
     def __init__(self):
         self.graph = {}
